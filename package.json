@@ -67,7 +67,8 @@
     "publish": {
       "provider": "github",
       "owner": "TokelPlatform",
-      "repo": "tokel_app"
+      "repo": "tokel_app",
+      "releaseType": "prerelease"
     },
     "afterSign": "config/scripts/Notarize.js",
     "mac": {
@@ -300,7 +301,7 @@
     "source-map-support": "^0.5.19"
   },
   "engines": {
-    "node": ">=10.x",
+    "node": ">=15.x",
     "npm": ">=6.x",
     "yarn": ">=1.21.3"
   },
