@@ -14,17 +14,13 @@ import Select from 'components/_General/Select';
 import Updater from './Updater';
 
 const SubsectionRoot = styled.div`
-  /* padding: 8px; */
-  width: 50%;
-  ${Responsive.below.L} {
-    width: 100%;
-  }
-  margin-bottom: 28px;
+  width: 100%;
+  margin-bottom: 3rem;
   padding: 0 14px;
 `;
 
 const SubsectionHeader = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   font-size: 20px;
   color: ${V.color.slate};
 `;
@@ -52,11 +48,6 @@ const SplitSection = styled.div`
   display: flex;
 `;
 
-const UpdateText = styled.p`
-  color: ${V.color.frontSoft};
-  padding: 18px;
-`;
-
 const themeOptions = themeNames.map(name => ({ label: capitalize(name), value: name }));
 const currencyOptions = ['None'].map(currency => ({ label: currency, value: currency }));
 
@@ -65,11 +56,6 @@ const Settings = () => {
 
   return (
     <GenericPanel thin title="Settings">
-      <Subsection name="Updates" contrast>
-        <UpdateText>
-          <Updater />
-        </UpdateText>
-      </Subsection>
       <SplitSection>
         <Subsection name="Theme">
           <Select
@@ -82,6 +68,9 @@ const Settings = () => {
           <Select onSelect={console.log} options={currencyOptions} defaultValue="None" />
         </Subsection>
       </SplitSection>
+      <Subsection name="Updates" contrast>
+        <Updater />
+      </Subsection>
     </GenericPanel>
   );
 };

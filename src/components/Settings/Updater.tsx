@@ -6,6 +6,8 @@ import styled from '@emotion/styled';
 import { ProgressInfo } from 'builder-util-runtime';
 import { ipcRenderer } from 'electron';
 
+import { V } from 'util/theming';
+
 import { ButtonSmall } from 'components/_General/buttons';
 
 interface UpdateInfo {
@@ -16,11 +18,18 @@ interface UpdateInfo {
   error: boolean;
 }
 
-const restartApp = () => ipcRenderer.send('update-restart');
+const UpdaterRoot = styled.div`
+  display: flex;
+  padding: 18px;
+`;
 
 const UpdateText = styled.span`
+  color: ${V.color.frontSoft};
   padding: 10px;
+  margin-left: 1rem;
 `;
+
+const restartApp = () => ipcRenderer.send('update-restart');
 
 const Updater = () => {
   const [update, setUpdate] = useState<UpdateInfo>({
@@ -67,7 +76,7 @@ const Updater = () => {
   });
 
   return (
-    <div>
+    <UpdaterRoot>
       {update.downloaded ? (
         <ButtonSmall onClick={restartApp}>Click to restart</ButtonSmall>
       ) : update.available ? (
@@ -90,7 +99,7 @@ const Updater = () => {
           'No update available'
         )}
       </UpdateText>
-    </div>
+    </UpdaterRoot>
   );
 };
 
