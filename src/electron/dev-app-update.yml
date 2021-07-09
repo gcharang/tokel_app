@@ -1,1 +1,4 @@
 provider: github
+owner: TokelPlatform
+repo: tokel_app
+releaseType: prerelease
