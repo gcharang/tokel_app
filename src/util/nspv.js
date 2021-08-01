@@ -67,7 +67,7 @@ class NspvSingleton {
   }
 
   cleanup() {
-    console.log('SIGINT by the app');
+    console.log('killing nspv on SIGINT by the app');
     this.nukeit = true;
     this.nspv.kill(SIGINT);
   }
