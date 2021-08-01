@@ -1,6 +1,6 @@
 // nspv settings
-export const TICKER = 'TKLTEST6';
-export const RPC_PORT = '65460';
+export const TICKER = 'KMD';
+export const RPC_PORT = '7771';
 
 export const TOPBAR_HEIGHT = 38;
 export const FEE = 0.0001;
@@ -27,6 +27,8 @@ export enum ViewType {
   DEX = 'dex',
   NFT_MARKET = 'nft_market',
   SETTINGS = 'settings',
+  CONSOLE = 'console',
+  OUTPUT = `Output`,
 }
 
 export enum ModalName {

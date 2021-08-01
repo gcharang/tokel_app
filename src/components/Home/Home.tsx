@@ -8,8 +8,10 @@ import links from 'util/links';
 import { TOPBAR_HEIGHT, ViewType } from 'vars/defines';
 
 import InfoNote from 'components/_General/InfoNote';
+import Console from 'components/Console/Console';
 import Dashboard from 'components/Dashboard/Dashboard';
 import SideMenu from 'components/Home/Menu/SideMenu';
+import Output from 'components/Output/Output';
 
 const HomeRoot = styled.div`
   display: flex;
@@ -49,6 +51,10 @@ const renderView = viewType => {
       return getNote('NFT Marketplace');
     case ViewType.SETTINGS:
       return getNote('Setting');
+    case ViewType.CONSOLE:
+      return <Console />;
+    case ViewType.OUTPUT:
+      return <Output />;
     default:
       return getNote('This functionality');
   }
