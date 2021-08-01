@@ -34,6 +34,16 @@ export const menuData = [
     name: 'Settings',
     icon: ToggleIcon,
   },
+  {
+    type: ViewType.CONSOLE,
+    name: 'Console',
+    icon: ToggleIcon,
+  },
+  {
+    type: ViewType.OUTPUT,
+    name: 'Output',
+    icon: ToggleIcon,
+  },
 ];
 
 const SideMenuRoot = styled.div`

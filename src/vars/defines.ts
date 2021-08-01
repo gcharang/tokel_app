@@ -27,6 +27,8 @@ export enum ViewType {
   DEX = 'dex',
   NFT_MARKET = 'nft_market',
   SETTINGS = 'settings',
+  CONSOLE = 'console',
+  OUTPUT = `Output`,
 }
 
 export enum ModalName {
