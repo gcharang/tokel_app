@@ -1,6 +1,6 @@
 // nspv settings
-export const TICKER = 'KMD';
-export const RPC_PORT = '7771';
+export const TICKER = 'TOKEL';
+export const RPC_PORT = '29405';
 
 export const TOPBAR_HEIGHT = 38;
 export const FEE = 0.0001;
