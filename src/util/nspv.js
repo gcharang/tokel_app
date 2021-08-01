@@ -44,11 +44,11 @@ class NspvSingleton {
     this.nspv.stdout.setEncoding('utf8');
 
     this.nspv.stdout.on('data', data => {
-      console.log('------', data);
+      console.log('------', data.toString());
     });
 
     this.nspv.stderr.on('data', err => {
-      console.error(`stderr: ${err}`);
+      console.error(`stderr: ${err.toString()}`);
     });
 
     this.nspv.on('exit', code => {

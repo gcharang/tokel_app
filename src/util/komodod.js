@@ -51,11 +51,11 @@ class KomododInstance {
     this.komodod.stdout.setEncoding('utf8');
 
     this.komodod.stdout.on('data', data => {
-      console.log('------', data);
+      console.log('------', data.toString());
     });
 
     this.komodod.stderr.on('data', err => {
-      console.error(`stderr: ${err}`);
+      console.error(`stderr: ${err.toString()}`);
     });
 
     this.komodod.on('exit', code => {
