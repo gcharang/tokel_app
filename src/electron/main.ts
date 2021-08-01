@@ -17,6 +17,7 @@ import { BrowserWindow, app, ipcMain, shell } from 'electron';
 import log from 'electron-log';
 import { autoUpdater } from 'electron-updater';
 
+// import KomododInstance from '../util/komodod';
 import nspv from '../util/nspv';
 import { WindowControl } from '../vars/defines';
 import MenuBuilder from './menu';
@@ -111,6 +112,7 @@ const createWindow = async () => {
 
   mainWindow.on('closed', () => {
     nspv.cleanup();
+    // komodod.cleanup(); TODO: keep track of all komodods started and cleanthem up here
     mainWindow = null;
   });
 
