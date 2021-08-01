@@ -13,80 +13,56 @@ Tokel logo represent universe. Tokel is a platform which will allow creation of 
   <img src="assets/colors.png" width="50%" />
 
 
-### Tokel on Dark
+### Tokel Text Logo on Dark
 <img src="assets/TokelTextOnDark.png" width="100%" />
 
 
 #### SVG
-[Tokel](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel-text.svg)
+[Tokel](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel-text.svg)
 
 #### PNG
-[Tokel](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel-text.png)
+[Tokel](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel-text.png)
 
-[Tokel x2](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel-textx2.png)
+[Tokel x2](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel-textx2.png)
 
-[Tokel x3](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel-textx3.png)
+[Tokel x3](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel-textx3.png)
 
-### Tokel on White
+### Tokel Text Logo on White
 <img src="assets/TokelTextOnWhite.png" width="100%" />
 
 
 #### SVG
-[Tokel](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel-black-text.svg)
+[Tokel](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel-black-text.svg)
 
 #### PNG
-[Tokel](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel-black-text.png)
+[Tokel](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel-black-text.png)
 
-[Tokel x2](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel-black-textx2.png)
+[Tokel x2](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel-black-textx2.png)
 
-[Tokel x3](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel-black-textx3.png)
+[Tokel x3](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel-black-textx3.png)
 
-### Tokel
-<img src="assets/tokelx3.png" />
+### Tokel Logo For Dark backgrounds
+<img src="assets/tokelx3.png" width="20%"/>
 
 #### SVG
-[Tokel](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel.svg)
+[Tokel](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel.svg)
 
 #### PNG
-[Tokel](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokel.png)
+[Tokel](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokel.png)
 
-[Tokel x2](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokelx2.png)
+[Tokel x2](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokelx2.png)
 
-[Tokel x3](https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/tokelx3.png)
+[Tokel x3](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokelx3.png)
 
+### Tokel Logo For Light backgrounds
+<img src="assets/tokelBlack.png" width="20%"/>
 
-## Banners
+#### SVG
+[Tokel](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokelBlack.svg)
 
-  <img src="assets/buy-on-tokel.png" width="50%" />
+#### PNG
+[Tokel](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokelBlack.png)
 
-```
-<a href="https://tokel.io">
-  <img width="50%" src="https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/buy-on-tokel.png" /> 
-</a>
-```
+[Tokel x2](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokelBlackx2.png)
 
-
-  <img src="assets/trade-on-tokel.png" width="50%" />
-
-```
-<a href="https://tokel.io">
-  <img width="50%" src="https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/trade-on-tokel.png" /> 
-</a>
-```
-
-
-  <img src="assets/sell-on-tokel.png" width="50%" />
-
-```
-<a href="https://tokel.io">
-  <img width="50%" src="https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/sell-on-tokel.png" /> 
-</a>
-```
-
-  <img src="assets/create-on-tokel.png" width="50%" />
-
-```
-<a href="https://tokel.io">
-  <img width="50%" src="https://github.com/TokelPlatform/tokel_app/raw/brand_pack/brand_package/assets/create-on-tokel.png" /> 
-</a>
-```
+[Tokel x3](https://github.com/TokelPlatform/tokel_app/raw/development/brand_package/assets/tokelBlackx3.png)
