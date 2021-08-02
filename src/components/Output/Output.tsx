@@ -1,17 +1,11 @@
-import React, { ReactElement, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { ReactElement } from 'react';
 
 import styled from '@emotion/styled';
 
-import { dispatch } from 'store/rematch';
-import { selectAccountAddress, selectKey } from 'store/selectors';
-import { listTransactions, login } from 'util/nspvlib';
-import { getAllTransactionDetails } from 'util/transactions';
-
+import OutputSidebar from './Outputs/OutputSidebar';
 import OutputView from './OutputView';
-import Portfolio from './Portfolio/OutputSidebar';
 
-const DashboardRoot = styled.div`
+const OutputsRoot = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
@@ -21,33 +15,13 @@ const DashboardRoot = styled.div`
   margin: 0;
 `;
 
-const HALFMINUTE = 30000;
-const ELEVENMINUTES = 660000;
-
-const Dashboard1 = (): ReactElement => {
-  const key = useSelector(selectKey);
-  const address = useSelector(selectAccountAddress);
-  useEffect(() => {
-    const loginInterval = setInterval(() => login(key), ELEVENMINUTES);
-    const txInterval = setInterval(() => {
-      // @todo get txs after a certain block in the future
-      listTransactions(address)
-        .then(txs => getAllTransactionDetails(txs.txids))
-        .then(txs => dispatch.account.SET_TXS(txs))
-        .catch(e => console.log(e));
-    }, HALFMINUTE);
-    return () => {
-      clearInterval(loginInterval);
-      clearInterval(txInterval);
-    };
-  }, [address, key]);
-
+const Outputs = (): ReactElement => {
   return (
-    <DashboardRoot>
-      <Portfolio />
+    <OutputsRoot>
+      <OutputSidebar />
       <OutputView />
-    </DashboardRoot>
+    </OutputsRoot>
   );
 };
 
-export default Dashboard1;
+export default Outputs;

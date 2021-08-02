@@ -2,10 +2,7 @@ import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
 import styled from '@emotion/styled';
-import parse from 'html-react-parser';
-import { identicon } from 'minidenticons';
 
-import happyIcon from 'assets/happy.svg';
 import { selectAccountAddress } from 'store/selectors';
 
 import ProgressBar from 'components/_General/ProgressBar';
@@ -29,12 +26,6 @@ const OutputSidebarItemRoot = styled.div<OutputSidebarItemRootProps>`
   }
 `;
 
-const IconWrapper = styled.div`
-  display: block;
-  height: 32px;
-  width: 32px;
-`;
-
 const Information = styled.div`
   display: flex;
   flex: 1;
@@ -45,11 +36,6 @@ const Information = styled.div`
 `;
 
 const Name = styled.h3`
-  margin: 0;
-`;
-
-const Amount = styled.p`
-  color: var(--color-gray);
   margin: 0;
 `;
 
@@ -68,7 +54,6 @@ const OutputSidebarItem = ({
   selected,
   onClick,
 }: OutputSidebarItemProps): ReactElement => {
-  const address = useSelector(selectAccountAddress);
   return (
     <OutputSidebarItemRoot selected={selected} onClick={onClick}>
       <Information>

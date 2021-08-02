@@ -5,7 +5,6 @@ import styled from '@emotion/styled';
 
 import { dispatch } from 'store/rematch';
 import { selectChosenOutput } from 'store/selectors';
-import { formatDec } from 'util/helpers';
 
 import { WidgetContainer } from '../widgets/common';
 import OutputSidebarItem from './OutputSidebarItem';
