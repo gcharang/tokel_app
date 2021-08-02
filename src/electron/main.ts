@@ -172,3 +172,14 @@ ipcMain.on('get-nspvProcess', event => {
 });
 
 // use files write and read
+ipcMain.on('get-nspvOutput', event => {
+  const nspvProcess = nspv.get();
+  nspvProcess.stdout.on('data', data => {
+    console.log(`my ${data.toString()}`);
+    event.reply('receive-nspvOutput', data.toString());
+  });
+  nspvProcess.stderr.on('data', err => {
+    console.error(`my stderr: ${err.toString()}`);
+    event.reply('receive-nspvOutput', err.toString());
+  });
+});

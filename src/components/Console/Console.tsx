@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import TextField from '@material-ui/core/TextField';
+import { ipcRenderer } from 'electron';
 
 import { dispatch } from 'store/rematch';
 import { ErrorMessages } from 'vars/defines';
@@ -34,6 +36,24 @@ const Dashboard1 = ({ addNewWallet }: LoginFormProps) => {
   const [error, setError] = useState(null);
   const [feedback, setFeedback] = useState('');
   const [showSpinner, setShowSpinner] = useState(false);
+  const [messageList, setMessageList] = React.useState([]);
+
+  React.useEffect(() => {
+    ipcRenderer.on('receive-nspvOutput', (event, msg) => {
+      console.log(msg);
+      // if (msg.includes('\n')) {
+      //   let splitMsg = [];
+      // }
+      setMessageList([...messageList, msg].slice(-20));
+    });
+
+    ipcRenderer.send('get-nspvOutput');
+
+    // Cleanup the listener events so that memory leaks are avoided.
+    return function cleanup() {
+      ipcRenderer.removeAllListeners('receive-nspvOutput');
+    };
+  }, []);
 
   const performLogin = useCallback(() => {
     if (!loginValue) {
@@ -53,7 +73,15 @@ const Dashboard1 = ({ addNewWallet }: LoginFormProps) => {
   return (
     <LoginFormRoot>
       <TextStyle>
-        <TextField multiline fullWidth rows={40} color="secondary" variant="filled" />
+        <TextField
+          multiline
+          fullWidth
+          defaultValue={messageList}
+          rows={40}
+          disabled
+          color="secondary"
+          variant="filled"
+        />
       </TextStyle>
       <TextStyle>
         <TextField
