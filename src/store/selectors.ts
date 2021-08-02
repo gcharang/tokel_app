@@ -15,6 +15,7 @@ export const selectTransactions = (state: RootState) =>
   state.account.txs[state.account.address] ?? [];
 export const selectUncofirmedTransactions = (state: RootState) =>
   state.account?.txs[state.account?.address]?.filter(tx => tx.unconfirmed) ?? [];
+export const selectChosenOutput = (state: RootState) => state.account.chosenOutput ?? 'NSPV';
 
 export const selectChosenAsset = (state: RootState) => state.wallet.chosenAsset;
 export const selectAssets = (state: RootState) => state.wallet.assets ?? [];

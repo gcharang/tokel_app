@@ -31,6 +31,7 @@ const store = init({
             key: null,
             nspvFeedback: null,
             txs: state.account.txs,
+            chosenOutput: null,
           },
           wallet: {
             chosenAsset: null,
