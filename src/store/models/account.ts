@@ -26,6 +26,8 @@ export interface AccountState {
   };
   key: string;
   chosenTx: TxType;
+  chosenOutput?: string;
+  outputs?: Array<string>;
 }
 
 interface LoginArgs {
@@ -36,12 +38,18 @@ interface LoginArgs {
 
 export default createModel<RootModel>()({
   state: {
+    chosenOutput: null,
     address: null,
     unspent: null,
     txs: {},
     key: null,
   } as AccountState,
   reducers: {
+    SET_CHOSEN_OUTPUT: (state, chosenOutput: string) => ({
+      ...state,
+      chosenOutput,
+    }),
+
     SET_ADDRESS: (state, address: string) => ({
       ...state,
       address,
