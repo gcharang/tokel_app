@@ -44,11 +44,11 @@ class NspvSingleton {
     this.nspv.stdout.setEncoding('utf8');
 
     this.nspv.stdout.on('data', data => {
-      console.log('------', data);
+      console.log('------', data.toString());
     });
 
     this.nspv.stderr.on('data', err => {
-      console.error(`stderr: ${err}`);
+      console.error(`stderr: ${err.toString()}`);
     });
 
     this.nspv.on('exit', code => {
@@ -67,7 +67,7 @@ class NspvSingleton {
   }
 
   cleanup() {
-    console.log('SIGINT by the app');
+    console.log('killing nspv on SIGINT by the app');
     this.nukeit = true;
     this.nspv.kill(SIGINT);
   }

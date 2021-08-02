@@ -17,7 +17,7 @@ import { BrowserWindow, app, ipcMain, shell } from 'electron';
 import log from 'electron-log';
 import { autoUpdater } from 'electron-updater';
 
-// import KomododInstance from '../util/komodod';
+// import komodod from '../util/komodod';
 import nspv from '../util/nspv';
 import { WindowControl } from '../vars/defines';
 import MenuBuilder from './menu';
@@ -112,7 +112,7 @@ const createWindow = async () => {
 
   mainWindow.on('closed', () => {
     nspv.cleanup();
-    // komodod.cleanup(); TODO: keep track of all komodods started and cleanthem up here
+    // komodod.cleanup(); // TODO: keep track of all komodods started and cleanthem up here
     mainWindow = null;
   });
 
@@ -165,4 +165,21 @@ ipcMain.on('window-controls', async (_, arg) => {
       mainWindow.close();
     }
   }
+});
+
+ipcMain.on('get-nspvProcess', event => {
+  event.reply('receive-nspvProcess', JSON.stringify(nspv));
+});
+
+// use files write and read
+ipcMain.on('get-nspvOutput', event => {
+  const nspvProcess = nspv.get();
+  nspvProcess.stdout.on('data', data => {
+    console.log(`my ${data.toString()}`);
+    event.reply('receive-nspvOutput', data.toString());
+  });
+  nspvProcess.stderr.on('data', err => {
+    console.error(`my stderr: ${err.toString()}`);
+    event.reply('receive-nspvOutput', err.toString());
+  });
 });

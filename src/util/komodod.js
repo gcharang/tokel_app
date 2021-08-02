@@ -4,7 +4,7 @@ import path from 'path';
 import os from 'os';
 import { SIGINT } from 'constants';
 
-import { OsType } from '../vars/defines';
+import { OsType, RPC_PORT, TOKEL_PARAMS } from '../vars/defines';
 
 const { app } = require('electron');
 
@@ -33,7 +33,11 @@ class KomododInstance {
     if (process.env.NODE_ENV === 'test') {
       return 'singleton created';
     }
-    this.params = params;
+    this.params = params.split(' ');
+    this.portParams = [
+      `-port=${parseInt(RPC_PORT, 10) + 95}`,
+      `-rpcport=${parseInt(RPC_PORT, 10) + 96}`,
+    ];
     this.binName = getBinaryName();
     this.connect();
     this.reconnected = 0;
@@ -41,19 +45,21 @@ class KomododInstance {
 
   connect() {
     console.log('Starting a new komodod process in the background.');
-    this.komodod = spawn(path.join(cwd, this.binName), this.params, { cwd });
+    this.komodod = spawn(path.join(cwd, this.binName), [...this.params, ...this.portParams], {
+      cwd,
+    });
     this.komodod.stdout.setEncoding('utf8');
 
     this.komodod.stdout.on('data', data => {
-      console.log('------', data);
+      console.log('------', data.toString());
     });
 
     this.komodod.stderr.on('data', err => {
-      console.error(`stderr: ${err}`);
+      console.error(`stderr: ${err.toString()}`);
     });
 
     this.komodod.on('exit', code => {
-      console.log('exit', code);
+      console.log('komodod exit', code);
       if (!this.nukeit && this.reconnected < RECONNECT_TIMES) {
         setTimeout(() => {
           this.connect();
@@ -68,12 +74,12 @@ class KomododInstance {
   }
 
   cleanup() {
-    console.log('SIGINT by the app');
+    console.log('killing komodod on SIGINT by the app');
     this.nukeit = true;
     this.komodod.kill(SIGINT);
   }
 }
 
-// const komodod = new KomododInstance();
+const komodod = new KomododInstance(TOKEL_PARAMS);
 
-export default KomododInstance;
+export default komodod;
