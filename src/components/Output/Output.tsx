@@ -7,6 +7,7 @@ import { Theme, makeStyles } from '@material-ui/core/styles';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
+import { ipcRenderer } from 'electron';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -20,7 +21,7 @@ const TextStyle = styled.div`
 `;
 
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index } = props;
 
   return (
     <div
@@ -28,7 +29,6 @@ function TabPanel(props: TabPanelProps) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}
     >
       {value === index && (
         <Box p={3}>
@@ -56,8 +56,22 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const [nspvProcess, setNspvProcess] = React.useState(null);
 
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+  React.useEffect(() => {
+    ipcRenderer.on('receive-nspvProcess', (event, process) => {
+      setNspvProcess(process);
+    });
+
+    ipcRenderer.send('get-nspvProcess');
+
+    // Cleanup the listener events so that memory leaks are avoided.
+    return function cleanup() {
+      ipcRenderer.removeAllListeners('get-nspvProcess');
+    };
+  }, []);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, newValue: number) => {
     setValue(newValue);
   };
 
@@ -71,14 +85,26 @@ export default function SimpleTabs() {
             variant="fullWidth"
             aria-label="simple tabs example"
           >
-            <Tab label="Item One" {...a11yProps(0)} />
-            <Tab label="Item Two" {...a11yProps(1)} />
-            <Tab label="Item Three" {...a11yProps(2)} />
+            <Tab
+              label="Item One"
+              id={a11yProps(0).id}
+              aria-controls={a11yProps(0)['aria-controls']}
+            />
+            <Tab
+              label="Item Two"
+              id={a11yProps(1).id}
+              aria-controls={a11yProps(1)['aria-controls']}
+            />
+            <Tab
+              label="Item Three"
+              id={a11yProps(2).id}
+              aria-controls={a11yProps(2)['aria-controls']}
+            />
           </Tabs>
         </AppBar>
 
         <TabPanel value={value} index={0}>
-          Item One
+          {nspvProcess}
         </TabPanel>
         <TabPanel value={value} index={1}>
           Item Two

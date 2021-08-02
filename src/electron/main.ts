@@ -166,3 +166,9 @@ ipcMain.on('window-controls', async (_, arg) => {
     }
   }
 });
+
+ipcMain.on('get-nspvProcess', event => {
+  event.reply('receive-nspvProcess', JSON.stringify(nspv));
+});
+
+// use files write and read
